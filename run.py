@@ -42,7 +42,27 @@ def get_user_input():
 
 
 def validate_user_input(user_input):
-    print("In validate_user_input function")
+    """
+    Ensures five values present, that the first and fourth values are 
+    integers and that the second, third and fifth values are one of 
+    'Y' or 'N'.
+    Raises ValueError if any of this isn't the case.
+    """
+
+    YES_NO_OPTIONS = ['Y', 'N']
+
+    try:
+        if len(user_input) != 5:
+            raise ValueError(f"5 options are required to create your random password(s); you entered {len(user_input)}")
+        
+    except ValueError as e:
+        print()
+        print("****************************************************************************")
+        print(f"Error with input: {e}. Please try again")
+        print("****************************************************************************")
+        print()
+        return False
+    
     return True
 
 
