@@ -53,7 +53,14 @@ def validate_user_input(user_input):
 
     try:
         if len(user_input) != 5:
-            raise ValueError(f"5 options are required to create your random password(s); you entered {len(user_input)}")
+            raise ValueError(f"5 options required; you entered {len(user_input)}")
+        
+        # Unpack options into five variables
+        first, second, third, fourth, fifth = user_input
+
+        # Check if second, third and and fifth options are 'Y' or 'N' as expected
+        if second.upper() not in YES_NO_OPTIONS or third.upper() not in YES_NO_OPTIONS or fifth.upper() not in YES_NO_OPTIONS:
+            raise ValueError(f"The second, third and fifth options must be 'Y' or 'N'; \nyou entered {second} (second), {third} (third), {fifth} (fifth)")
         
     except ValueError as e:
         print()
