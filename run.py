@@ -78,6 +78,16 @@ def validate_user_input(user_input):
     return True
 
 
+def generate_password(num_chars, special, phrase):
+    """
+    Generate and return random password as per user's specification
+    """
+
+    print('num_chars: ', num_chars)
+    print('special: ', special)
+    print('phrase: ', phrase)
+
+
 def main():
     """
     Run program
@@ -97,10 +107,6 @@ def main():
     passphrase = True if (passphrase.upper() == 'Y') else False
     write_to_gdoc = True if (write_to_gdoc.upper() == 'Y') else False
 
-    print(num_chars)
-    print(special_chars)
-    print(passphrase)
-    print(num_passwords)
-    print(write_to_gdoc)
+    password = generate_password(num_chars, special_chars, passphrase)
 
 main()
