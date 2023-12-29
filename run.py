@@ -107,10 +107,19 @@ def generate_passphrase(num_chars, special):
     passphrase = []
     fake = Faker()
     
-    i = 0
     while len(passphrase) < num_chars:
         word = fake.word()
-        passphrase.append(word)
+        
+        # This checks that the word is less than seven characters, as words that are too long are less memorable 
+        # and readable, and that the length of the final passphrase won't exceed num_chars (the password length 
+        # specified by the user at the start of the program)
+        if len(word) <= 7 and len(word) < (num_chars - len(passphrase)):
+            word = word.capitalize()
+
+            for letter in word:
+                passphrase.append(letter)
+
+            passphrase.append('|')
 
     return passphrase
 
