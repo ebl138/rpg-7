@@ -23,9 +23,28 @@ def get_user_input():
     print('Xn72*1{!:=b^')
     print()
 
-    user_input = input('Please enter your password options here: ')
+    # Improve readability of loop with named variable indicating validity of user input
+    valid = False
 
-    print(f"In get_user_input() function and here is user input: {user_input}")
+    while not valid:
+        user_input = input('Please enter your password options here: ')
+
+        # Split user input into list of strings in preparation for data validation
+        password_options = user_input.split(",")
+
+        # Set valid to True if password options are valid to end loop (improves readability a bit)
+        valid = validate_user_input(password_options)
+
+    return password_options
+
+
+    #print(f"In get_user_input() function and here is user input: {user_input}")
+
+
+def validate_user_input(user_input):
+    print("In validate_user_input function")
+    return True
+
 
 def main():
     """
