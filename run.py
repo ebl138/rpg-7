@@ -110,6 +110,7 @@ def generate_passphrase(num_chars, special):
     
     while len(passphrase) < num_chars:
         word = fake.word()
+        letter_to_num = {'a': '4', 'e': '3', 'i': '1', 'o': '0', 's': '5', 'z': '2'}
         
         # This checks that the word is less than seven characters, as words that are too long are less memorable 
         # and readable, and that the length of the final passphrase won't exceed num_chars (the password length 
@@ -118,20 +119,23 @@ def generate_passphrase(num_chars, special):
             word = word.capitalize()
 
             # This loop is necessary as passphrase needs to be a list of characters for now, not a list of words.
+            # It also substitutes out certain letters for numbers
             for letter in word:
+                if letter in letter_to_num.keys():
+                    letter = letter_to_num[letter]
                 passphrase.append(letter)
         
         # If there are only one or two characters left until the specified password length then just append 2 
-        # special characters if specified, else append random 1-letter or 2-letter word
+        # special characters if specified, else append random 1-letter or 2-letter word (with numbers inserted)
         chars_left = num_chars - len(passphrase)
         if 0 < chars_left < 3:
             if special:
                 pass
             else:
                 if chars_left == 1:
-                    passphrase.append(secrets.choice(['a', 'i']))
+                    passphrase.append(secrets.choice(['4', '1']))
                 else:
-                    for letter in secrets.choice(['at', 'my', 'an', 'he', 'be', 'to']):
+                    for letter in secrets.choice(['4t', 'my', '4n', 'h3', 'b3', 't0']):
                         passphrase.append(letter)
 
     return passphrase
