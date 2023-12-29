@@ -89,6 +89,13 @@ def main():
 
     # Unpack validated user_input to provide variables with which to configure password
     num_chars, special_chars, passphrase, num_passwords, write_to_gdoc = user_input
+    num_chars = int(num_chars)
+    num_passwords = int(num_passwords)
+
+    # Convert special_chars, passphrase and write_to_gdoc to boolean values
+    special_chars = True if (special_chars.upper() == 'Y') else False
+    passphrase = True if (passphrase.upper() == 'Y') else False
+    write_to_gdoc = True if (write_to_gdoc.upper() == 'Y') else False
 
     print(num_chars)
     print(special_chars)
