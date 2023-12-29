@@ -66,6 +66,10 @@ def validate_user_input(user_input):
         first_int = int(first)
         fourth_int = int(fourth)
 
+        # Check if first option is between 8 and 25 and fourth option is between 1 and 10 as expected
+        if first_int not in [num for num in range(8, 26)] or fourth_int not in [num for num in range(1, 11)]:
+            raise ValueError(f"The first option must be between 8 and 25 and the fourth option must be \nbetween 1 and 10; you entered {first_int} (first), {fourth_int} (fourth)")
+
     except ValueError as e:
         print()
         print("****************************************************************************")
