@@ -38,9 +38,6 @@ def get_user_input():
     return password_options
 
 
-    #print(f"In get_user_input() function and here is user input: {user_input}")
-
-
 def validate_user_input(user_input):
     """
     Ensures five values present, that the first and fourth values are 
@@ -89,5 +86,14 @@ def main():
     print()
     user_input = get_user_input()
     print()
+
+    # Unpack validated user_input to provide variables with which to configure password
+    num_chars, special_chars, passphrase, num_passwords, write_to_gdoc = user_input
+
+    print(num_chars)
+    print(special_chars)
+    print(passphrase)
+    print(num_passwords)
+    print(write_to_gdoc)
 
 main()
