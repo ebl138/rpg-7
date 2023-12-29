@@ -62,10 +62,14 @@ def validate_user_input(user_input):
         if second.upper() not in YES_NO_OPTIONS or third.upper() not in YES_NO_OPTIONS or fifth.upper() not in YES_NO_OPTIONS:
             raise ValueError(f"The second, third and fifth options must be 'Y' or 'N'; \nyou entered {second} (second), {third} (third), {fifth} (fifth)")
         
+        # ValueError exception will be raised if either first or fourth (or both) can't be converted to integers
+        first_int = int(first)
+        fourth_int = int(fourth)
+
     except ValueError as e:
         print()
         print("****************************************************************************")
-        print(f"Error with input: {e}. Please try again")
+        print(f"Error with input: \n{e}. Please try again.")
         print("****************************************************************************")
         print()
         return False
