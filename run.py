@@ -4,6 +4,7 @@ import string
 # which returns a random English word for use in generate_passphrase()
 # https://faker.readthedocs.io/en/master/
 from faker import Faker
+import secrets
 
 def get_user_input():
     """
@@ -116,10 +117,22 @@ def generate_passphrase(num_chars, special):
         if len(word) <= 7 and len(word) < (num_chars - len(passphrase)):
             word = word.capitalize()
 
+            # This loop is necessary as passphrase needs to be a list of characters for now, not a list of words.
             for letter in word:
                 passphrase.append(letter)
-
-            passphrase.append('|')
+        
+        # If there are only one or two characters left until the specified password length then just append 2 
+        # special characters if specified, else append random 1-letter or 2-letter word
+        chars_left = num_chars - len(passphrase)
+        if 0 < chars_left < 3:
+            if special:
+                pass
+            else:
+                if chars_left == 1:
+                    passphrase.append(secrets.choice(['a', 'i']))
+                else:
+                    for letter in secrets.choice(['at', 'my', 'an', 'he', 'be', 'to']):
+                        passphrase.append(letter)
 
     return passphrase
 
