@@ -1,3 +1,10 @@
+import string
+# Faker is a handy wee module that generates fake data like real-sounding words and 
+# sentences for a variety of purposes; we're only interested in the method 'word()' 
+# which returns a random English word for use in generate_passphrase()
+# https://faker.readthedocs.io/en/master/
+from faker import Faker
+
 def get_user_input():
     """
     Get five comma-separated characters from user for password options.
@@ -92,7 +99,20 @@ def generate_password(num_chars, special, phrase):
     return password
 
 def generate_passphrase(num_chars, special):
-    return f'In generate_passphrase() function; num_chars is {num_chars} and special is {special}'
+    """
+    Generate and return a collection of random words (a phrase) 
+    with various letters replaced by numbers
+    """
+
+    passphrase = []
+    fake = Faker()
+    
+    i = 0
+    while len(passphrase) < num_chars:
+        word = fake.word()
+        passphrase.append(word)
+
+    return passphrase
 
 
 def main():
