@@ -83,9 +83,16 @@ def generate_password(num_chars, special, phrase):
     Generate and return random password as per user's specification
     """
 
-    print('num_chars: ', num_chars)
-    print('special: ', special)
-    print('phrase: ', phrase)
+    password = []
+
+    # If passphrase chosen, call generate_passphrase()
+    if phrase:
+        password = generate_passphrase(num_chars, special)
+
+    return password
+
+def generate_passphrase(num_chars, special):
+    return f'In generate_passphrase() function; num_chars is {num_chars} and special is {special}'
 
 
 def main():
@@ -108,5 +115,6 @@ def main():
     write_to_gdoc = True if (write_to_gdoc.upper() == 'Y') else False
 
     password = generate_password(num_chars, special_chars, passphrase)
+    print(password)
 
 main()
