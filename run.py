@@ -5,6 +5,7 @@ import string
 # https://faker.readthedocs.io/en/master/
 from faker import Faker
 import secrets
+import math
 
 def get_user_input():
     """
@@ -133,7 +134,7 @@ def generate_passphrase(num_chars, special):
         chars_left = num_chars - len(passphrase)
         if 0 < chars_left < 3:
             if special:
-                pass
+                passphrase = insert_special_chars(passphrase, True)
             else:
                 if chars_left == 1:
                     # '4' instead of 'a', '1' instead of 'i'
@@ -146,8 +147,22 @@ def generate_passphrase(num_chars, special):
 
 
 def insert_special_chars(password, phrase):
-    print('In insert_special_characters() function')
-    password.append('£')
+    """
+    Insert special characters into password list at random places.
+    If 'phrase' is True, append and prepend special characters.
+    """
+
+    SPECIAL = string.punctuation
+    # The reason we use math.floor(len(password)/4) is because we only want relatively few special characters as they 
+    # are a bit harder to remember in a password
+    num_special = math.floor(len(password)/4)
+
+    # If dealing with passphrase, just append a special character as we will be calling insert_special_chars() after every 
+    # word in the phrase, ending up with something like S0M3£Gr33n$Tr33s*, instead of S£0M3G$r33nTr*33s, thus maintaining 
+    # the readability inherent in a passphrase
+    if phrase:
+        password.append(secrets.choice(SPECIAL))
+        return password
 
     return password
 
