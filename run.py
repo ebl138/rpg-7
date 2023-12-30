@@ -113,7 +113,10 @@ def generate_password(num_chars, special, phrase):
         if special:
             password = insert_special_chars(password, phrase)
 
-    return password
+    # Convert to string
+    password_string = ''.join(str(char) for char in password)
+
+    return password_string
 
 
 def generate_passphrase(num_chars, special):
@@ -169,6 +172,7 @@ def insert_special_chars(password, phrase):
     """
 
     SPECIAL = string.punctuation
+
     # The reason we use math.floor(len(password)/4) is because we only want relatively few special characters as they 
     # are a bit harder to remember in a password
     num_special = math.floor(len(password)/4)
