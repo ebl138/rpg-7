@@ -214,7 +214,11 @@ def main():
     passphrase = True if (passphrase.upper() == 'Y') else False
     write_to_gdoc = True if (write_to_gdoc.upper() == 'Y') else False
 
-    password = generate_password(num_chars, special_chars, passphrase)
+    # Loop to implement number of passwords (fourth option) functionality
+    password = ''
+    for _ in range(num_passwords):
+        password += generate_password(num_chars, special_chars, passphrase) + '\n'
+    
     print(password)
 
 main()
