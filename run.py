@@ -124,6 +124,9 @@ def generate_passphrase(num_chars, special):
                 if letter in letter_to_num.keys():
                     letter = letter_to_num[letter]
                 passphrase.append(letter)
+
+            if special:
+                passphrase = insert_special_chars(passphrase, True)
         
         # If there are only one or two characters left until the specified password length then just append 2 
         # special characters if specified, else append random 1-letter or 2-letter word (with numbers inserted)
@@ -133,12 +136,20 @@ def generate_passphrase(num_chars, special):
                 pass
             else:
                 if chars_left == 1:
+                    # '4' instead of 'a', '1' instead of 'i'
                     passphrase.append(secrets.choice(['4', '1']))
                 else:
                     for letter in secrets.choice(['4t', 'my', '4n', 'h3', 'b3', 't0']):
                         passphrase.append(letter)
 
     return passphrase
+
+
+def insert_special_chars(password, phrase):
+    print('In insert_special_characters() function')
+    password.append('£')
+
+    return password
 
 
 def main():
