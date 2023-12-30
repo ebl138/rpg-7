@@ -6,6 +6,7 @@ import string
 from faker import Faker
 import secrets
 import math
+import random
 
 def get_user_input():
     """
@@ -109,7 +110,11 @@ def generate_password(num_chars, special, phrase):
         # is more secure and cryptographically stronger (https://docs.python.org/3/library/secrets.html)
         password = [secrets.choice(ALPHA_NUM) for i in range(0, num_chars)]
 
+        if special:
+            password = insert_special_chars(password, phrase)
+
     return password
+
 
 def generate_passphrase(num_chars, special):
     """
@@ -174,6 +179,14 @@ def insert_special_chars(password, phrase):
     if phrase:
         password.append(secrets.choice(SPECIAL))
         return password
+    
+    chosen_special_chars = [secrets.choice(SPECIAL) for i in range(0, num_special)]
+
+    # Replace random characters with randomly chosen special characters and shuffle password
+    for char in chosen_special_chars:
+        password[secrets.randbelow(len(password))] = char
+
+    random.shuffle(password)
 
     return password
 
