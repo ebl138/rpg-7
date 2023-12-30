@@ -195,6 +195,10 @@ def insert_special_chars(password, phrase):
     return password
 
 
+def save_to_gdrive(password):
+    print('Only testing: Password written to file in Google Drive!')
+
+
 def main():
     """
     Run program
@@ -219,6 +223,10 @@ def main():
     for _ in range(num_passwords):
         password += generate_password(num_chars, special_chars, passphrase) + '\n'
     
-    print(password)
+    if not write_to_gdoc:
+        # password[:-1] is used to leave out last \n
+        print(password[:-1])
+    else:
+        save_to_gdrive(password)
 
 main()
