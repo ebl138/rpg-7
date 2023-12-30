@@ -210,10 +210,11 @@ def save_to_gdrive(password):
     drive = GoogleDrive(gauth)
 
     file_name = input("What would you like the name of the file to be? (e.g. MyPasswords): ")
+    file_name = file_name + ".txt"
  
     # Create and write to file in Google Drive using user-supplied file name
     file = drive.CreateFile({'title': file_name})
-    file.SetContentString("test")
+    file.SetContentString(password)
     file.Upload()
 
     print(f'Password written to {file_name} in Google Drive!')
