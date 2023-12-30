@@ -7,6 +7,11 @@ from faker import Faker
 import secrets
 import math
 import random
+# PyDrive is a very helpful wrapper library of google-api-python-client which manages 
+# Google Drive operations, such as authenticating with Google Drive and creating files
+# https://pypi.org/project/PyDrive/
+from pydrive.auth import GoogleAuth
+from pydrive.drive import GoogleDrive
 
 def get_user_input():
     """
@@ -196,7 +201,16 @@ def insert_special_chars(password, phrase):
 
 
 def save_to_gdrive(password):
-    print('Only testing: Password written to file in Google Drive!')
+    """
+    Save password to file in Google Drive using user-supplied file name.
+    """
+    # Authenticate using GoogleAuth() method of PyDrive and use to set up instance of Google Drive
+    gauth = GoogleAuth()
+    gauth.LocalWebserverAuth()
+    drive = GoogleDrive(gauth)
+
+    file_name = input("What would you like the name of the file to be? (e.g. MyPasswords): ")
+    print(f'Only testing: Password written to {file_name} in Google Drive!')
 
 
 def main():
