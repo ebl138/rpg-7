@@ -98,6 +98,17 @@ def generate_password(num_chars, special, phrase):
     if phrase:
         password = generate_passphrase(num_chars, special)
 
+    if not password:
+        # Generate password consisting of random characters
+        
+        # All lowercase and uppercase alphanumeric characters in English language (including two sets of all digits so 
+        # more numbers appear in password)
+        ALPHA_NUM = string.ascii_letters + (string.digits*2)
+
+        # secrets.choice(ALPHA_NUM) returns random element of ALPHA_NUM; secrets is also better than other modules as it 
+        # is more secure and cryptographically stronger (https://docs.python.org/3/library/secrets.html)
+        password = [secrets.choice(ALPHA_NUM) for i in range(0, num_chars)]
+
     return password
 
 def generate_passphrase(num_chars, special):
