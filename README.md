@@ -108,7 +108,10 @@ IMPORTANT NOTE REGARDING DEPLOYMENT:
     1. Go to Google Developers Console - https://console.developers.google.com and create a new project. Click on 
     Enable and manage APIs, click on Drive API, then click on Enable API. In API Manager, click on Credentials on 
     the left panel. Select Add Credentials, choose OAuth 2.0 client ID, then Web Application. You may need to configure 
-    a consent screen, where the required part is the Product name, and the rest you can leave blank.
+    a consent screen, where the required part is the Product name, and the rest you can leave blank. In the Create client 
+    ID window, with Web application selected as Application type, specify the Name for your application, put 
+    http://localhost:8080 for Javascript origins and http://localhost:8080/ for redirect URIs. IMPORTANT: One of these ends 
+    with /, the other does not.
     2. Go to Google Developers Console -https://console.developers.google.com and find the Use Google API section and 
     click on Enable and manage APIs. Select Credentials on the left panel. You should see a list of your OAuth 2.0 client 
     IDs. Check off the one you've created in step 1, and click on the download JSON button (looks like an arrow down icon). 
@@ -121,8 +124,6 @@ IMPORTANT NOTE REGARDING DEPLOYMENT:
     Drive, etc. After this, however, you shouldn't need to manually authenticate again.
     5. If I missed out any steps/information here, sorry, I found most of this information from this Stack Overflow answer: 
     https://stackoverflow.com/questions/28184419/pydrive-invalid-client-secrets-file. Hopefully it helps
-
-In the Create client ID window, with Web application selected as Application type, specify the Name for your application, put http://localhost:8080 for Javascript origins and http://localhost:8080/ for redirect URIs. IMPORTANT: One of these ends with /, the other does not.
 
 ### How to deploy
 
