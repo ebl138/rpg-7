@@ -103,7 +103,26 @@ IMPORTANT NOTE REGARDING DEPLOYMENT:
   file but I'm pretty sure this doesn't do anything for this project. I'm also aware these files expose sensitive 
   information regarding my Google account but, unfortunately, I couldn't find any other way to make this work. You 
   may need to replace these files with the information of your own Google account to get the fifth (saving to Google 
-  Drive) feature to work; alternatively, you can use the provided files and this will create a file in my Google Drive
+  Drive) feature to work; alternatively, you can use the provided files and this will create a file in my Google Drive.
+- If you need to test with your own/a Code Institute Google account, you can create these files by doing the following:
+    1. Go to Google Developers Console - https://console.developers.google.com and create a new project. Click on 
+    Enable and manage APIs, click on Drive API, then click on Enable API. In API Manager, click on Credentials on 
+    the left panel. Select Add Credentials, choose OAuth 2.0 client ID, then Web Application. You may need to configure 
+    a consent screen, where the required part is the Product name, and the rest you can leave blank.
+    2. Go to Google Developers Console -https://console.developers.google.com and find the Use Google API section and 
+    click on Enable and manage APIs. Select Credentials on the left panel. You should see a list of your OAuth 2.0 client 
+    IDs. Check off the one you've created in step 1, and click on the download JSON button (looks like an arrow down icon). 
+    Rename the downloaded file to client_secrets.json.
+    3. You may find using a settings.yaml file useful for easier/quicker authentication; just copy mine and replace the 
+    client_id and client_secret fields with those of your own account. They can be found in the client_secrets.json file 
+    downloaded in the previous step.
+    4. You will probably be asked to authenticate when testing out the 'Save to Google Drive' functionality for the first 
+    time; this should open a browser and you will need to follow the instructions to allow the app access to your Google 
+    Drive, etc. After this, however, you shouldn't need to manually authenticate again.
+    5. If I missed out any steps/information here, sorry, I found most of this information from this Stack Overflow answer: 
+    https://stackoverflow.com/questions/28184419/pydrive-invalid-client-secrets-file. Hopefully it helps
+
+In the Create client ID window, with Web application selected as Application type, specify the Name for your application, put http://localhost:8080 for Javascript origins and http://localhost:8080/ for redirect URIs. IMPORTANT: One of these ends with /, the other does not.
 
 ### How to deploy
 
