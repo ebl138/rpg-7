@@ -6,5 +6,3 @@ __pycache__/
 *.py[cod]
 node_modules/
 .github/
-creds.json
-settings.yaml
