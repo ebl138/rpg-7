@@ -1,3 +1,4 @@
+# RPG-7 Random Password Generator
 import string
 # Faker is a handy wee module that generates fake data like real-sounding words and 
 # sentences for a variety of purposes; we're only interested in the method 'word()' 
@@ -42,7 +43,7 @@ def get_user_input():
     valid = False
 
     while not valid:
-        user_input = input('Please enter your password options here: ')
+        user_input = input('Please enter your password options here: \n')
 
         # Split user input into list of strings in preparation for data validation
         password_options = user_input.split(",")
@@ -209,7 +210,7 @@ def save_to_gdrive(password):
     gauth.LocalWebserverAuth()
     drive = GoogleDrive(gauth)
 
-    file_name = input("What would you like the name of the file to be? (e.g. MyPasswords): ")
+    file_name = input("What would you like the name of the file to be? (e.g. MyPasswords): \n")
     file_name = file_name + ".txt"
  
     # Create and write to file in Google Drive using user-supplied file name
