@@ -7,7 +7,7 @@ from the terminal or have them saved to a document in Google Drive.
 
 [Live version of the project](https://rpg-7-05e54012230e.herokuapp.com/)
 
-![Am I Responsive mockup](https://raw.githubusercontent.com/ebl138/rpg-7/main/media/RPG-7-responsive-mockup.PNG)
+![Am I Responsive mockup](https://raw.githubusercontent.com/ebl138/rpg-7/main/media/RPG-7-responsive-mockup.png)
 
 ## How to use
 
@@ -31,49 +31,59 @@ more memorable, rather than random characters with Y for yes or N for no
 5. Save in Google Drive file: this allows the user to save their password(s) in a file in Google Drive with Y for yes 
 or N for no; N will print the password(s) to the terminal
 
+The instructions are presented to the user as follows:
+
+![User instructions](https://raw.githubusercontent.com/ebl138/rpg-7/main/media/user-instructions.png)
+
 ## Features
-
-- __Random, strong password generation__
-
-- __Flexibility in choice__
-
-- __Save to Google Drive__
 
 ### Existing features
 
+- __Random, strong password generation__
+
+  - Passwords are created by randomly choosing alphanumeric characters (including both uppercase and lowercase letters) 
+    using the secure, cryptographically strong Python module 'Secrets', which is more random than the 'random' module.
+  - Passwords are output as text, either in the terminal or to a file in Google Drive, which allows for easy copy/pasting.
+  - Example of strongest password generated:
+
+![First feature](https://raw.githubusercontent.com/ebl138/rpg-7/main/media/first-feature.png)
+
+- __Flexibility in choice__
+
+  - There are three options which directly affect the strength and security of the passwords, ranging from least secure 
+    (8 characters, no special characters, non-passphrase) to most secure (25 characters, including special characters, and 
+    made up of a passphrase).
+
+- __Save to Google Drive__
+
+  - There is an option to save the generated password(s) to a file in Google Drive, from where they can be saved as a local 
+    file to the user's computer.
+  - Example of content of file saved in Google Drive with command '12,Y,Y,4,Y':
+
+![Second feature](https://raw.githubusercontent.com/ebl138/rpg-7/main/media/second-feature.png)
+
 ### Future features
+
+- Make passphrase passwords grammatically correct and sensical and, thus, easier to remember
+- Substitute out more letters for numbers
+- Insert more capital letters into passphrases
 
 ## Data model
 
 ## Testing
 
-## Bugs
+### Bugs
 
-### Solved bugs
+#### Solved bugs
 
-### Remaining bugs
+#### Remaining bugs
+
+- There are no (known) bugs remaining
 
 ### Validator testing
+
+- No errors are returned when running run.py code through Code Institute's validator: https://pep8ci.herokuapp.com/
 
 ## Deployment
 
 ## Credits
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
----
-
-Happy coding!
