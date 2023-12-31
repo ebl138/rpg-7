@@ -68,13 +68,23 @@ The instructions are presented to the user as follows:
 - Substitute out more letters for numbers
 - Insert more capital letters into passphrases
 
-## Data model
-
 ## Testing
+
+The program has been manually tested:
+
+ - Passed run.py code through Code Institute's validator
+ - Given invalid inputs for each option: strings when integers expected, integers when strings expected and numbers 
+   outwith required ranges
+ - Tested in vscode terminal and Heroku terminal
 
 ### Bugs
 
 #### Solved bugs
+
+- During development, in generate_passphrase(), when building the list of characters which becomes the password, I 
+  appended the two letter word instead of each letter of the two letter word; this sometimes produced a password 
+  with incorrect length e.g. a 21 character password when a 20 character password was requested. This was fixed 
+  by appending each character of the word, instead of the word itself
 
 #### Remaining bugs
 
@@ -86,4 +96,25 @@ The instructions are presented to the user as follows:
 
 ## Deployment
 
+IMPORTANT NOTE REGARDING DEPLOYMENT:
+
+- As you might have noticed already, I have uploaded the creds.json, client_secrets.json and settings.yaml to this 
+  repo; as such, I haven't set any config vars in Heroku, except for CREDS, which is the content of my creds.json 
+  file but I'm pretty sure this doesn't do anything for this project. I'm also aware these files expose sensitive 
+  information regarding my Google account but, unfortunately, I couldn't find any other way to make this work. You 
+  may need to replace these files with the information of your own Google account to get the fifth (saving to Google 
+  Drive) feature to work; alternatively, you can use the provided files and this will create a file in my Google Drive
+
+### How to deploy
+
+- Fork or clone this repository
+- Create a new Heroku app
+- Set the buildpacks to Python and NodeJS in that order
+- Link the Heroku app to the repository by clicking Github then entering name of repository
+- Click on Enable Automatic Deploys then Open app (top right)
+
 ## Credits
+
+- Code Institute for the template on Github on which I based my project, including the mock terminal for Heroku
+- the Faker module (https://faker.readthedocs.io/en/master/)
+- the PyDrive module (https://pypi.org/project/PyDrive/)
